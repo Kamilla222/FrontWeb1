@@ -1,0 +1,76 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="robots" content="none" />
+    <meta name="format-detection" content="telephone=no">
+    <link href="/css/style.css" type="text/css" data-template-style="true" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Регистрация нового пользователя</title>
+</head>
+
+<body>
+<style>
+    body {
+        background-image: url("https://omycotton.com/wp-content/uploads/2015/03/white-marble-2048.jpg");
+    }
+</style>
+
+<div class="login-p">
+    <div class="login-f">
+        <form class="pure-form" th:action="@{/user/registration}" th:object="${user}" method="post">
+            <h2 class="form-registration-heading" align="center">Регистрация</h2>
+            <div class="form-group">
+                <p class="login-str"></p>
+
+                <div class="mb-3" align="center">
+                    <p class="pass-str"></p>
+                    <input tabindex="2" placeholder="Пароль" type="password" class="form-control"
+                           id="password" style="width: 300px;" th:field="*{password}" required/>
+                    <p class="pass-str"></p>
+                    <input tabindex="3" placeholder="Повторите пароль" class="form-control" type="password"
+                           id="confirm_password" style="width: 300px;" required/>
+                </div>
+                <div class="mb-3" align="center">
+                    <p class="name-str"></p>
+                    <input tabindex="4" placeholder="Имя" type="text" class="form-control"
+                           id="name" style="width: 300px;" th:field="*{firstName}" required/>
+                </div>
+                <div class="form-group" align="center">
+                    <p class="surname-str"></p>
+                    <input tabindex="5" placeholder="Фамилия" type="text" class="form-control"
+                           id="surname" style="width: 300px;" th:field="*{lastName}" required/>
+                </div>
+                <div align="center">
+                    <p class="e-mail"></p>
+                    <input tabindex="8" placeholder="E-mail" class="form-control" type="email"
+                           id="email" style="width: 300px;" th:field="*{email}"/>
+                    <p class="login-message" style="color: red"
+                       th:if="${userAlreadyExist == true}">Такой email уже зарегистрирован!</p>
+                </div>
+
+                <div class="form-floating" align="center">
+                    <p class="btn-p"></p>
+                        <input tabindex="10" class="btn btn-primary" style="width: 300px;"
+                               type="submit" value="Регистрация" />
+                </div>
+            </div>
+        </form>
+        <div class="form-floating" align="center">
+            <p class="btn-p"></p>
+
+            <a href="/login">  <input tabindex="10" class="btn btn-primary" style="width: 300px;"
+                                      type="submit" value="Вход" /></a>
+        </div>
+<!--        <div class="form-floating" align="center">-->
+<!--            <p class="btn-p"></p>-->
+<!--        <a class="nav-link active" aria-current="page" href="/login"><button >Вход</button> </a>-->
+<!--            </div>-->
+    </div>
+</div>
+<script src='/js/password-validation.js'></script>
+</body>
+
+</html>
